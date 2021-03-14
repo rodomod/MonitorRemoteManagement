@@ -2,6 +2,7 @@
 
 package tetris;
 
+
 import javax.swing.JFrame;
 
 
@@ -19,7 +20,6 @@ private GameArea ga;
 public void startGame(){
    new GameThread(ga).start();
 }
-
    @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
@@ -31,16 +31,17 @@ public void startGame(){
 
       placeholder.setBackground(new java.awt.Color(238, 238, 238));
       placeholder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+      placeholder.setPreferredSize(new java.awt.Dimension(154, 300));
 
       javax.swing.GroupLayout placeholderLayout = new javax.swing.GroupLayout(placeholder);
       placeholder.setLayout(placeholderLayout);
       placeholderLayout.setHorizontalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGap(0, 152, Short.MAX_VALUE)
+         .addGap(0, 198, Short.MAX_VALUE)
       );
       placeholderLayout.setVerticalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGap(0, 298, Short.MAX_VALUE)
+         .addGap(0, 438, Short.MAX_VALUE)
       );
 
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -49,19 +50,21 @@ public void startGame(){
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
             .addGap(150, 150, 150)
-            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(150, 150, 150))
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addComponent(placeholder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+         .addGroup(layout.createSequentialGroup()
+            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
       );
 
       pack();
       setLocationRelativeTo(null);
    }// </editor-fold>//GEN-END:initComponents
 
-  
+ 
    public static
     void main(String args[]) {
       /* Set the Nimbus look and feel */

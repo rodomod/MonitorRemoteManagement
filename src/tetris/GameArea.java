@@ -13,6 +13,7 @@ public
    private int gridColumns;
    private int gridCellSize;
    private TetrisBlock block;
+   private Color[][]background;
  public GameArea(JPanel placeholder,int columns){
     placeholder.setVisible(false);
     this.setBounds(placeholder.getBounds());
@@ -22,22 +23,42 @@ public
     gridColumns=columns;
     gridCellSize=this.getBounds().width/gridColumns;
     gridRows=this.getBounds().height/gridCellSize;
-    spawnBlock();
+     background=new Color[gridRows][gridColumns];                                 
  }
 public void spawnBlock(){
    block=new TetrisBlock(new int[][]{{1,0},{1,0},{1,1}},Color.cyan);
    block.spawn(gridColumns);
 }
-   public void moveBlockDown(){
-      if(checkBottom()==false)return;
+   public boolean moveBlockDown(){
+      if(checkBottom()==false){
+		  moveBlockToBackground();
+	  return false;
+	  }
       block.moveDown();
       repaint();
+	  return true;
         }
    private boolean checkBottom(){
       if(block.getBottomEdge()==gridRows){
          return false;}
       return true;
    }
+   private void moveBlockToBackground(){
+	   int[][]shape=block.getShape();
+	   int h=block.getHeight();
+	   int w=block.getWidth();
+	   
+	   int xPos=block.getX();
+	   int yPos=block.getY();
+	   Color color=block.getColor();
+	   for(int r=0;r<h;r++){
+		   for(int c=0;c<w;c++){
+			   if(shape[r][c]==1){
+				   background[r+yPos][c+xPos]=color;
+	                }
+	             }
+	          }
+	     }
    private void drawBlock(Graphics g){
       int h=block.getHeight();
       int w=block.getWidth();
@@ -49,17 +70,44 @@ public void spawnBlock(){
                
                int x=(block.getX()+col)*gridCellSize;
                int y=(block.getY()+row)*gridCellSize;
-               g.setColor(c);
-               g.fillRect(x,y,gridCellSize,gridCellSize);
-               g.setColor(Color.black);
-               g.drawRect(x,y,gridCellSize,gridCellSize);
+               drawGridSquare(g,c,x,y);
             }
          }
       }
    }
+   private void drawBackground(Graphics g) {
+	 Color color;
+	 for(int r=0;r<gridRows;r++){
+		 for(int c=0;c<gridColumns;c++){
+			 color=background[r][c];
+			 if(color !=null){
+				 int x=c*gridCellSize;
+				 int y=r*gridCellSize;
+			 drawGridSquare(g,color,x,y);
+   }}}}
+  private void drawGridSquare(Graphics g,Color color,int x,int y){
+	           g.setColor(color);
+               g.fillRect(x,y,gridCellSize,gridCellSize);
+               g.setColor(Color.black);
+               g.drawRect(x,y,gridCellSize,gridCellSize);
+  } 
    @Override
    protected void paintComponent(Graphics g){
       super.paintComponent(g);
+	  drawBackground(g);
       drawBlock(g);
    }
- }
+
+
+   }
+ 
+
+
+
+
+
+
+
+
+
+

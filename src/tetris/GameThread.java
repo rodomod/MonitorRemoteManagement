@@ -15,12 +15,15 @@ public
    @Override
   public void run(){
       while (true) {
-         try {ga.moveBlockDown();
-         Thread.sleep(400);
-            
-         } catch (InterruptedException ex) {
+		  ga.spawnBlock();
+		 while(ga.moveBlockDown()){ 
+        try {
+             Thread.sleep(400);
+            } catch (InterruptedException ex) {
             Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE,null,ex);
-                  }
+		           }
+		        }
              }
          }
  }
+
