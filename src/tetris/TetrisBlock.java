@@ -1,8 +1,6 @@
 
 
 package tetris;
-
-
 import java.awt.Color;
 
 
@@ -60,3 +58,6 @@ public void setX(int newX) {x=newX;}
 public void setY(int newY) {y=newY;}
    
   }
+
+
+

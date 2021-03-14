@@ -1,5 +1,7 @@
 
+
 package tetris;
+
 
 
 import java.awt.event.ActionEvent;
@@ -67,14 +69,21 @@ private GameArea ga;
        
     }
 public void startGame(){
-   new GameThread(ga).start();
+   new GameThread(ga,this).start();
 }
-
+public void updateScore(int score){
+   scoreDisplay.setText("Score : "+score);
+}
+ public void updateLevel(int level){
+ levelDisplay.setText("Level : "+level);   
+ } 
    @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
 
       placeholder = new javax.swing.JPanel();
+      scoreDisplay = new javax.swing.JLabel();
+      levelDisplay = new javax.swing.JLabel();
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       setResizable(false);
@@ -90,8 +99,14 @@ public void startGame(){
       );
       placeholderLayout.setVerticalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGap(0, 438, Short.MAX_VALUE)
+         .addGap(0, 440, Short.MAX_VALUE)
       );
+
+      scoreDisplay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      scoreDisplay.setText("Score :");
+
+      levelDisplay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      levelDisplay.setText("Level :");
 
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
       getContentPane().setLayout(layout);
@@ -100,18 +115,30 @@ public void startGame(){
          .addGroup(layout.createSequentialGroup()
             .addGap(150, 150, 150)
             .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(150, 150, 150))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+               .addComponent(levelDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+               .addComponent(scoreDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addComponent(placeholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+         .addGroup(layout.createSequentialGroup()
+            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
+         .addGroup(layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(scoreDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(levelDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
       );
 
       pack();
       setLocationRelativeTo(null);
    }// </editor-fold>//GEN-END:initComponents
 
- 
+   
    public static
     void main(String args[]) {
       /* Set the Nimbus look and feel */
@@ -147,6 +174,8 @@ public void startGame(){
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private javax.swing.JLabel levelDisplay;
    private javax.swing.JPanel placeholder;
+   private javax.swing.JLabel scoreDisplay;
    // End of variables declaration//GEN-END:variables
 }

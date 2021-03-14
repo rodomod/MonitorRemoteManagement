@@ -1,3 +1,5 @@
+
+
 package tetris;
 
 import java.awt.Color;
@@ -38,11 +40,18 @@ public
       block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.cyan);
       block.spawn(gridColumns);
    }
-
+public boolean isBlockOutOfBounds(){
+   if(block.getY()<0){
+      block=null;
+      return true;
+   }
+   return false;
+}
    public
     boolean moveBlockDown() {
       if (checkBottom() == false) {
-         moveBlockToBackground();
+      //   moveBlockToBackground();
+       //  clearLines();
          return false;
       }
       block.moveDown();
@@ -157,8 +166,41 @@ public
 
       return true;
    }
-
-   private
+public int clearLines(){
+  boolean lineFilled;
+  int linesCleared=0;
+  for(int r=gridRows-1;r>=0;r--){
+     lineFilled=true;
+     for(int c=0;c<gridColumns;c++){
+        if(background[r][c]==null){
+           lineFilled=false;
+           break;
+        }
+     }
+     if(lineFilled){
+        linesCleared++;
+     clearLine(r);
+     shiftDown(r);
+     clearLine(0);
+     r++;
+        repaint();
+     }
+  }
+ return linesCleared; 
+}
+private void clearLine(int r){
+      for(int i=0;i<gridColumns;i++){
+           background[r][i]=null;
+        }
+}
+private void shiftDown(int r){
+  for(int row=r;row>0;row--){
+     for(int col=0;col<gridColumns;col++){
+        background[row][col]=background[row-1][col];
+     }
+  } 
+}
+   public
     void moveBlockToBackground() {
       int[][] shape = block.getShape();
       int h = block.getHeight();
@@ -225,3 +267,5 @@ public
       drawBlock(g);
    }
 }
+
+

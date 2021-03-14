@@ -2,9 +2,10 @@
 
 package tetris;
 
+
 public
  class Tetris {
-      public static
+         public static
     void main(String[] args) {
    
    }
