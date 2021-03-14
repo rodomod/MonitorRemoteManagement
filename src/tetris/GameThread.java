@@ -2,9 +2,6 @@
 
 package tetris;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 public
  class GameThread extends Thread {
@@ -19,6 +16,9 @@ public
    public GameThread(GameArea ga,GameForm gf){
       this.ga=ga;
       this.gf=gf;
+      gf.updateScore(score);
+      gf.updateLevel(level);
+      
    }
    @Override
   public void run(){
@@ -28,11 +28,12 @@ public
         try {
              Thread.sleep(pause);
             } catch (InterruptedException ex) {
-            Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE,null,ex);
+               return;
+            
 		           }
 		        }
          if(ga.isBlockOutOfBounds()){
-            System.out.println("Game Over");
+           Tetris.gameOver(score);
             break;
          }
           ga.moveBlockToBackground();

@@ -15,12 +15,12 @@ public
    private int currentRotation;
    private Color[]availableColors={
       Color.gray,
-      Color.BLUE,
-      Color.YELLOW,
-      Color.RED.brighter(),
-      Color.white.brighter(),
-       Color.GREEN,
-       Color.ORANGE.darker()   };
+      Color.blue,
+      Color.yellow,
+      Color.red,
+      Color.white,
+       Color.green,
+       Color.orange   };
 public TetrisBlock(int[][]shape){
    this.shape=shape;
    
@@ -47,6 +47,7 @@ public void spawn(int gridWidth){
    y =-getHeight();
    x=r.nextInt(gridWidth-getWidth());
    color=availableColors[r.nextInt(availableColors.length)];
+
   
 }
 public int[][]getShape(){return shape;}
