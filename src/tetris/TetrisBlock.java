@@ -1,5 +1,6 @@
 
 package tetris;
+
 import java.awt.Color;
 import java.util.Random;
 

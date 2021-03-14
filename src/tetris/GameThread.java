@@ -1,6 +1,7 @@
 
 package tetris;
 
+
 public
  class GameThread extends Thread {
    private GameArea ga;
@@ -47,4 +48,6 @@ public
           }
       }
  }
+
+
 

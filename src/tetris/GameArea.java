@@ -1,6 +1,4 @@
-
 package tetris;
-
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -24,21 +22,16 @@ public
     int gridColumns;
    private final
     int gridCellSize;
-   private TetrisBlock block;
-   private Color[][] background;
-   //private int [][]shape;
-   //private Color color;
-  // private int x;
-   //private int y;
-   //private int [][][]shapes;
-   //private int currentRotation;
-   //private Color[]availableColors;
+   private
+    TetrisBlock block;
+   private
+    Color[][] background;
    private final
-    TetrisBlock[]blocks;
-   
+    TetrisBlock[] blocks;
+
    public
     GameArea(JPanel placeholder, int columns) {
-      //placeholder.setVisible(false);
+
       this.setBounds(placeholder.getBounds());
       this.setBackground(placeholder.getBackground());
       this.setBorder(placeholder.getBorder());
@@ -46,34 +39,39 @@ public
       gridColumns = columns;
       gridCellSize = this.getBounds().width / gridColumns;
       gridRows = this.getBounds().height / gridCellSize;
-      blocks=new TetrisBlock[]{new IShape(),
-                               new JShape(),
-                               new LShape(),
-                               new OShape(),
-                               new SShape(),
-                               new TShape(),
-                               new ZShape() };
+      blocks = new TetrisBlock[]{new IShape(),
+         new JShape(),
+         new LShape(),
+         new OShape(),
+         new SShape(),
+         new TShape(),
+         new ZShape()};
    }
-public 
-    void initBackgroundArray(){
-        background = new Color[gridRows][gridColumns];  
+
+   public
+    void initBackgroundArray() {
+      background = new Color[gridRows][gridColumns];
    }
-    void spawnBlock() {
-       Random r=new Random();
+
+   void spawnBlock() {
+      Random r = new Random();
       block = blocks[r.nextInt(blocks.length)];
       block.spawn(gridColumns);
    }
-public boolean isBlockOutOfBounds(){
-   if(block.getY()<0){
-      block=null;
-      return true;
+
+   public
+    boolean isBlockOutOfBounds() {
+      if (block.getY() < 0) {
+         block = null;
+         return true;
+      }
+      return false;
    }
-   return false;
-}
+
    public
     boolean moveBlockDown() {
       if (checkBottom() == false) {
-      return false;
+         return false;
       }
       block.moveDown();
       repaint();
@@ -82,25 +80,33 @@ public boolean isBlockOutOfBounds(){
 
    public
     void moveBlockRight() {
-       if(block==null)return;
-      if (!checkRight()) 
+      if (block == null) {
          return;
+      }
+      if (!checkRight()) {
+         return;
+      }
       block.moveRight();
       repaint();
    }
 
    public
     void moveBlockLeft() {
-       if(block==null)return;
-      if (!checkLeft()) 
+      if (block == null) {
          return;
+      }
+      if (!checkLeft()) {
+         return;
+      }
       block.moveLeft();
       repaint();
    }
 
    public
     void dropBlock() {
-       if(block==null)return;
+      if (block == null) {
+         return;
+      }
       while (checkBottom()) {
          block.moveDown();
       }
@@ -109,12 +115,20 @@ public boolean isBlockOutOfBounds(){
 
    public
     void rotateBlock() {
-       if(block==null)return;
-               block.rotate();
-      if(block.getLeftEdge()<0)block.setX(0);
-      if(block.getRightEdge()>=gridColumns)block.setX(gridColumns-block.getWidth());
-      if(block.getBottomEdge()>gridRows)block.setY(gridRows-block.getHeight());
-               repaint();
+      if (block == null) {
+         return;
+      }
+      block.rotate();
+      if (block.getLeftEdge() < 0) {
+         block.setX(0);
+      }
+      if (block.getRightEdge() >= gridColumns) {
+         block.setX(gridColumns - block.getWidth());
+      }
+      if (block.getBottomEdge() > gridRows) {
+         block.setY(gridRows - block.getHeight());
+      }
+      repaint();
    }
 
    private
@@ -130,19 +144,24 @@ public boolean isBlockOutOfBounds(){
             if (shape[row][col] != 0) {
                int x = col + block.getX();
                int y = row + block.getY() + 1;
-               if (y < 0) break;
-               if (background[y][x] != null) return false;
+               if (y < 0) {
+                  break;
+               }
+               if (background[y][x] != null) {
+                  return false;
+               }
                break;
             }
          }
       }
-    return true;
+      return true;
    }
 
    private
     boolean checkLeft() {
-      if (block.getLeftEdge() == 0) 
+      if (block.getLeftEdge() == 0) {
          return false;
+      }
       int[][] shape = block.getShape();
       int w = block.getWidth();
       int h = block.getHeight();
@@ -151,69 +170,88 @@ public boolean isBlockOutOfBounds(){
             if (shape[row][col] != 0) {
                int x = col + block.getX() - 1;
                int y = row + block.getY();
-               if (y < 0) break;
-               if (background[y][x] != null) return false;
+               if (y < 0) {
+                  break;
+               }
+               if (background[y][x] != null) {
+                  return false;
+               }
                break;
             }
          }
       }
-    return true;
+      return true;
    }
 
    private
     boolean checkRight() {
-      if (block.getRightEdge() == gridColumns) 
+      if (block.getRightEdge() == gridColumns) {
          return false;
+      }
       int[][] shape = block.getShape();
       int w = block.getWidth();
       int h = block.getHeight();
       for (int row = 0 ; row < h ; row++) {
          for (int col = w - 1 ; col >= 0 ; col--) {
             if (shape[row][col] != 0) {
-               int x = col + block.getX()+1 ;
+               int x = col + block.getX() + 1;
                int y = row + block.getY();
-               if (y < 0) break;
-               if (background[y][x] != null) return false;
+               if (y < 0) {
+                  break;
+               }
+               if (background[y][x] != null) {
+                  return false;
+               }
                break;
             }
          }
       }
-     return true;
+      return true;
    }
-public int clearLines(){
-  boolean lineFilled;
-  int linesCleared=0;
-  for(int r=gridRows-1;r>=0;r--){
-     lineFilled=true;
-     for(int c=0;c<gridColumns;c++){
-        if(background[r][c]==null){
-           lineFilled=false;
-           break;
-        }
-     }
-     if(lineFilled){
-        linesCleared++;
-     clearLine(r);
-     shiftDown(r);
-     clearLine(0);
-     r++;
-        repaint();
-     }
-  }
- return linesCleared; 
-}
-private void clearLine(int r){
-      for(int i=0;i<gridColumns;i++){
-           background[r][i]=null;
-        }
-}
-private void shiftDown(int r){
-  for(int row=r;row>0;row--){
-     for(int col=0;col<gridColumns;col++){
-        background[row][col]=background[row-1][col];
-     }
-  } 
-}
+
+   public
+    int clearLines() {
+      boolean lineFilled;
+      int linesCleared = 0;
+      for (int r = gridRows - 1 ; r >= 0 ; r--) {
+         lineFilled = true;
+         for (int c = 0 ; c < gridColumns ; c++) {
+            if (background[r][c] == null) {
+               lineFilled = false;
+               break;
+            }
+         }
+         if (lineFilled) {
+            linesCleared++;
+            clearLine(r);
+            shiftDown(r);
+            clearLine(0);
+            r++;
+            repaint();
+         }
+      }
+      if (linesCleared > 0) {
+         Tetris.playClear();
+      }
+      return linesCleared;
+   }
+
+   private
+    void clearLine(int r) {
+      for (int i = 0 ; i < gridColumns ; i++) {
+         background[r][i] = null;
+      }
+   }
+
+   private
+    void shiftDown(int r) {
+      for (int row = r ; row > 0 ; row--) {
+         for (int col = 0 ; col < gridColumns ; col++) {
+            background[row][col] = background[row - 1][col];
+         }
+      }
+   }
+
    public
     void moveBlockToBackground() {
       int[][] shape = block.getShape();
@@ -275,6 +313,18 @@ private void shiftDown(int r){
    protected
     void paintComponent(Graphics g) {
       super.paintComponent(g);
+      for (int y = 0 ; y < gridRows ; y++) {
+         for (int x = 0 ; x < gridColumns ; x++) {
+
+            if (x < gridColumns - 1 && y < gridRows - 1) {
+               g.setColor(Color.gray);
+               g.drawLine((x + 1) * gridCellSize - 2, (y + 1) * gridCellSize, (x + 1) * gridCellSize + 2,
+                (y + 1) * gridCellSize);
+               g.drawLine((x + 1) * gridCellSize, (y + 1) * gridCellSize - 2, (x + 1) * gridCellSize,
+                (y + 1) * gridCellSize + 2);
+            }
+         }
+      }
       drawBackground(g);
       drawBlock(g);
    }
