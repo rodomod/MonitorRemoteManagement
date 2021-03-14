@@ -1,5 +1,4 @@
 
-
 package tetris;
 import java.awt.Color;
 import java.util.Random;
@@ -71,7 +70,3 @@ public void setX(int newX) {x=newX;}
 public void setY(int newY) {y=newY;}
    
   }
-
-
-
-

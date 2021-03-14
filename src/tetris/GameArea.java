@@ -1,6 +1,6 @@
 
-
 package tetris;
+
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -279,6 +279,3 @@ private void shiftDown(int r){
       drawBlock(g);
    }
 }
-
-
-

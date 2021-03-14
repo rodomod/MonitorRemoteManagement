@@ -1,23 +1,66 @@
 
 package tetris;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public
  class LeaderboardForm extends javax.swing.JFrame {
 
   private DefaultTableModel tm;
+  private String leaderboardFile="leaderboard";
+  private TableRowSorter<TableModel>sorter;
   
    public
     LeaderboardForm() {
       initComponents();
       initTableData();
+      initTableSorter();
    }
 private void initTableData(){
+   Vector ci=new Vector();
+   ci.add("Player");
+   ci.add("Score");
+   
+   
    tm=(DefaultTableModel)leaderboard.getModel();
+      try
+   {
+        FileInputStream fs=new FileInputStream(leaderboardFile);
+        ObjectInputStream os=new ObjectInputStream(fs);
+   
+         tm.setDataVector((Vector<Vector>)os.readObject(), ci);
+         os.close();
+         fs.close();
+   } catch(Exception e){}
 }
 
+private void initTableSorter(){
+   sorter=new TableRowSorter<>(tm);
+   leaderboard.setRowSorter(sorter);
+   ArrayList<SortKey>keys=new ArrayList<SortKey>();
+   keys.add(new SortKey(1,SortOrder.DESCENDING));
+   sorter.setSortKeys(keys);
+}
+private void saveLeaderboard(){
+     try {
+       FileOutputStream fs=new FileOutputStream(leaderboardFile);
+       ObjectOutputStream os=new ObjectOutputStream(fs);
+                          os.writeObject( tm.getDataVector());
+                          os.close();
+                          fs.close();
+   } catch(Exception e){}
+}
    @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
@@ -44,9 +87,16 @@ private void initTableData(){
             "Player", "Score"
          }
       ) {
+         Class[] types = new Class [] {
+            java.lang.Object.class, java.lang.Integer.class
+         };
          boolean[] canEdit = new boolean [] {
             false, false
          };
+
+         public Class getColumnClass(int columnIndex) {
+            return types [columnIndex];
+         }
 
          public boolean isCellEditable(int rowIndex, int columnIndex) {
             return canEdit [columnIndex];
@@ -88,6 +138,9 @@ private void initTableData(){
 
 public void addPlayer(String playerName,int score){
    tm.addRow(new Object[]{playerName,score});
+   sorter.sort();
+   saveLeaderboard();
+   
    this.setVisible(true);
 }
    public static

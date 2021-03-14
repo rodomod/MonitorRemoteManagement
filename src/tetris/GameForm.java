@@ -107,10 +107,10 @@ public void updateScore(int score){
       );
 
       scoreDisplay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-      scoreDisplay.setText("Score");
+      scoreDisplay.setText("Score :");
 
       levelDisplay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-      levelDisplay.setText("Level");
+      levelDisplay.setText("Level :");
 
       btnMainMenu.setText("Main Menu");
       btnMainMenu.setFocusable(false);

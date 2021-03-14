@@ -90,7 +90,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Score"/>
+        <Property name="text" type="java.lang.String" value="Score :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="levelDisplay">
@@ -98,7 +98,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Level"/>
+        <Property name="text" type="java.lang.String" value="Level :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnMainMenu">

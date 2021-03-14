@@ -1,7 +1,5 @@
 
-
 package tetris;
-
 
 public
  class GameThread extends Thread {
@@ -49,11 +47,4 @@ public
           }
       }
  }
-
-
-
-
-
-
-
 
