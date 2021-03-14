@@ -1,5 +1,4 @@
 
-
 package tetris;
 
 import java.util.logging.Level;
@@ -18,12 +17,13 @@ public
 		  ga.spawnBlock();
 		 while(ga.moveBlockDown()){ 
         try {
-             Thread.sleep(400);
+             Thread.sleep(600);
             } catch (InterruptedException ex) {
             Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE,null,ex);
 		           }
 		        }
-             }
-         }
+          }
+      }
  }
+
 

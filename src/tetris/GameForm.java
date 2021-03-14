@@ -1,9 +1,13 @@
 
-
 package tetris;
 
 
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JFrame;
+import javax.swing.KeyStroke;
 
 
 public
@@ -15,11 +19,57 @@ private GameArea ga;
       initComponents();
       ga=new GameArea(placeholder, 10);
       this.add(ga);
+      initControls();
       startGame();
    }
+    private void initControls(){
+       InputMap im=this.getRootPane().getInputMap();
+       ActionMap am=this.getRootPane().getActionMap();
+       
+       im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
+       im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+       im.put(KeyStroke.getKeyStroke("UP"), "up");
+       im.put(KeyStroke.getKeyStroke("DOWN"), "down");
+       
+    am.put("right", new AbstractAction() {
+
+          @Override
+          public
+          void actionPerformed(ActionEvent e) {
+           ga.moveBlockRight();
+
+          }
+       });
+    am.put("left", new AbstractAction() {
+
+          @Override
+          public
+          void actionPerformed(ActionEvent e) {
+          ga.moveBlockLeft();
+          }
+       });
+    am.put("up", new AbstractAction() {
+
+          @Override
+          public
+          void actionPerformed(ActionEvent e) {
+   ga.rotateBlock();
+          }
+       });
+    am.put("down", new AbstractAction() {
+
+          @Override
+          public
+          void actionPerformed(ActionEvent e) {
+           ga.dropBlock();
+          }
+       });
+       
+    }
 public void startGame(){
    new GameThread(ga).start();
 }
+
    @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
@@ -31,13 +81,12 @@ public void startGame(){
 
       placeholder.setBackground(new java.awt.Color(238, 238, 238));
       placeholder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-      placeholder.setPreferredSize(new java.awt.Dimension(154, 300));
 
       javax.swing.GroupLayout placeholderLayout = new javax.swing.GroupLayout(placeholder);
       placeholder.setLayout(placeholderLayout);
       placeholderLayout.setHorizontalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGap(0, 198, Short.MAX_VALUE)
+         .addGap(0, 200, Short.MAX_VALUE)
       );
       placeholderLayout.setVerticalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -50,14 +99,12 @@ public void startGame(){
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
             .addGap(150, 150, 150)
-            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(150, 150, 150))
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGroup(layout.createSequentialGroup()
-            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+         .addComponent(placeholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       );
 
       pack();
