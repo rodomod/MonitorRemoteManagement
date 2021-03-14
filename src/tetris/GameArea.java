@@ -12,41 +12,54 @@ public
    private int gridRows;
    private int gridColumns;
    private int gridCellSize;
-   
-   private int block[][]={{1,0},
-                          {1,0},
-                          {1,1} };//L
-   
-   public GameArea(JPanel placeholder,int columns){
-      placeholder.setVisible(false);
-      this.setBounds(placeholder.getBounds());
-      this.setBackground(placeholder.getBackground());
-      this.setBorder(placeholder.getBorder());
-      
-      gridColumns=columns;
-      gridCellSize=this.getBounds().width/gridColumns;
-      gridRows=this.getBounds().height/gridCellSize;
+   private TetrisBlock block;
+ public GameArea(JPanel placeholder,int columns){
+    placeholder.setVisible(false);
+    this.setBounds(placeholder.getBounds());
+    this.setBackground(placeholder.getBackground());
+    this.setBorder(placeholder.getBorder());
+    
+    gridColumns=columns;
+    gridCellSize=this.getBounds().width/gridColumns;
+    gridRows=this.getBounds().height/gridCellSize;
+    spawnBlock();
+ }
+public void spawnBlock(){
+   block=new TetrisBlock(new int[][]{{1,0},{1,0},{1,1}},Color.cyan);
+   block.spawn(gridColumns);
+}
+   public void moveBlockDown(){
+      if(checkBottom()==false)return;
+      block.moveDown();
+      repaint();
+        }
+   private boolean checkBottom(){
+      if(block.getBottomEdge()==gridRows){
+         return false;}
+      return true;
    }
    private void drawBlock(Graphics g){
-      for(int row=0;row<block.length;row++){
-         for(int col=0;col<block[0].length;col++){
-            if(block[row][col]==1){
-               g.setColor(Color.red);
-          g.fillRect(col*gridCellSize, row*gridCellSize, gridCellSize, gridCellSize);
-          g.setColor(Color.black);
-          g.drawRect(col*gridCellSize, row*gridCellSize, gridCellSize, gridCellSize);
+      int h=block.getHeight();
+      int w=block.getWidth();
+      Color c=block.getColor();
+      int[][]shape=block.getShape();
+      for(int row=0;row<h;row++){
+         for(int col=0;col<w;col++){
+            if(shape[row][col]==1){
+               
+               int x=(block.getX()+col)*gridCellSize;
+               int y=(block.getY()+row)*gridCellSize;
+               g.setColor(c);
+               g.fillRect(x,y,gridCellSize,gridCellSize);
+               g.setColor(Color.black);
+               g.drawRect(x,y,gridCellSize,gridCellSize);
+            }
          }
-       }
-     }
+      }
    }
    @Override
    protected void paintComponent(Graphics g){
-      super.paintComponent(g); //setka->
-  /**for(int y=0;y<gridRows;y++){
-      for(int x=0;x<gridColumns;x++){
-         g.drawRect(x*gridCellSize,y*gridCellSize, gridCellSize, gridCellSize);
-         }
-      }*/
+      super.paintComponent(g);
       drawBlock(g);
-   } 
-}
+   }
+ }
