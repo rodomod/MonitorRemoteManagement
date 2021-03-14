@@ -3,7 +3,6 @@
 package tetris;
 
 
-
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -77,7 +76,8 @@ public void updateScore(int score){
  public void updateLevel(int level){
  levelDisplay.setText("Level : "+level);   
  } 
-   @SuppressWarnings("unchecked")
+ 
+ @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
 
@@ -95,18 +95,18 @@ public void updateScore(int score){
       placeholder.setLayout(placeholderLayout);
       placeholderLayout.setHorizontalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGap(0, 200, Short.MAX_VALUE)
+         .addGap(0, 198, Short.MAX_VALUE)
       );
       placeholderLayout.setVerticalGroup(
          placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-         .addGap(0, 440, Short.MAX_VALUE)
+         .addGap(0, 0, Short.MAX_VALUE)
       );
 
       scoreDisplay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-      scoreDisplay.setText("Score :");
+      scoreDisplay.setText("Score");
 
       levelDisplay.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-      levelDisplay.setText("Level :");
+      levelDisplay.setText("Level");
 
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
       getContentPane().setLayout(layout);
@@ -115,30 +115,28 @@ public void updateScore(int score){
          .addGroup(layout.createSequentialGroup()
             .addGap(150, 150, 150)
             .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-               .addComponent(levelDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-               .addComponent(scoreDisplay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+               .addComponent(scoreDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+               .addComponent(levelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap())
       );
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
-            .addComponent(placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
-         .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(scoreDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addComponent(levelDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap())
+            .addGap(21, 21, 21)
+            .addComponent(scoreDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(26, 26, 26)
+            .addComponent(levelDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(308, Short.MAX_VALUE))
+         .addComponent(placeholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       );
 
       pack();
       setLocationRelativeTo(null);
    }// </editor-fold>//GEN-END:initComponents
 
-   
+ 
    public static
     void main(String args[]) {
       /* Set the Nimbus look and feel */

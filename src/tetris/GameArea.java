@@ -4,7 +4,15 @@ package tetris;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 import javax.swing.JPanel;
+import tetrisblock.IShape;
+import tetrisblock.JShape;
+import tetrisblock.LShape;
+import tetrisblock.OShape;
+import tetrisblock.SShape;
+import tetrisblock.TShape;
+import tetrisblock.ZShape;
 
 public
  class GameArea extends JPanel {
@@ -21,7 +29,7 @@ public
    private int [][][]shapes;
    private int currentRotation;
    private Color[]availableColors;
-
+private TetrisBlock[]blocks;
    public
     GameArea(JPanel placeholder, int columns) {
       placeholder.setVisible(false);
@@ -33,11 +41,19 @@ public
       gridCellSize = this.getBounds().width / gridColumns;
       gridRows = this.getBounds().height / gridCellSize;
       background = new Color[gridRows][gridColumns];
+      blocks=new TetrisBlock[]{new IShape(),
+                               new JShape(),
+                               new LShape(),
+                               new OShape(),
+                               new SShape(),
+                               new TShape(),
+                               new ZShape() };
    }
 
    public
     void spawnBlock() {
-      block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.cyan);
+       Random r=new Random();
+      block = blocks[r.nextInt(blocks.length)];
       block.spawn(gridColumns);
    }
 public boolean isBlockOutOfBounds(){
@@ -50,8 +66,7 @@ public boolean isBlockOutOfBounds(){
    public
     boolean moveBlockDown() {
       if (checkBottom() == false) {
-      //   moveBlockToBackground();
-       //  clearLines();
+      
          return false;
       }
       block.moveDown();
@@ -267,5 +282,6 @@ private void shiftDown(int r){
       drawBlock(g);
    }
 }
+
 
 
