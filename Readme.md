@@ -1,12 +1,12 @@
-# MonitorRemoteManagement
+# MRM
 
  
-new MRM ;
+
 
 ![](010.png)
 
 
-#√ Creating the git repository
+#√Creating the git repository
 
 
 $ mk dir git-tutorial 
@@ -23,8 +23,8 @@ $ git init
 
 
 
-#√ Creating the file 
-===========================
+#√Creating the file 
+
 
 • : создал два файла с текстом...
 
@@ -34,7 +34,7 @@ $ echo "pictyre the text" > MyFile
 $ echo "echo the text.java the end" > My2File
 
 
-#√ Creating index
+#√Creating index
 
 
 • : добавил в индекс для отслеживания в git
@@ -44,14 +44,14 @@ $ git update-index --add MyFile My2File
 
 
 
-#√  вывел объекты базы данных на дисплей 
+#√Вывел объекты базы данных на дисплей 
 
 $ ls.git/Objects/???/*
 
 
 $ ls.git/objects/?/*
 
-#√ Вывод объекта по имени объекта
+#√Вывод объекта по имени объекта
 
 •    : полное имя объекта
 	
@@ -68,13 +68,11 @@ $ git cat-file blob 557db03
 		
 $ git diff-files
 
-#√    
-•    : добавим в файл My2File  
+#√Добавим в файл My2File  
 	  
 $ echo "Это новая запись в My2File" >> My2File	
 
-#√     
-•    : далее смотрим изменения...
+#√Далее смотрим изменения
 	
 $ git diff-files 
 

@@ -1,7 +1,4 @@
-
-
 package tetris;
-
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
@@ -10,77 +7,80 @@ import javax.swing.InputMap;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
+public class GameForm extends JFrame {
 
-public
- class GameForm extends JFrame {
-private GameArea ga;
-private GameThread gt;
-   
-   public
-    GameForm() {
-      initComponents();
-      ga=new GameArea(placeholder, 10);
-      this.add(ga);
-      initControls();
-      
-   }
-    private void initControls(){
-       InputMap im=this.getRootPane().getInputMap();
-       ActionMap am=this.getRootPane().getActionMap();
-       
-       im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
-       im.put(KeyStroke.getKeyStroke("LEFT"), "left");
-       im.put(KeyStroke.getKeyStroke("UP"), "up");
-       im.put(KeyStroke.getKeyStroke("DOWN"), "down");
-       
-    am.put("right", new AbstractAction() {
+    private GameArea ga;
+    private GameThread gt;
 
-          @Override
-          public
-          void actionPerformed(ActionEvent e) {
-           ga.moveBlockRight();
+    public
+            GameForm() {
+        initComponents();
+        ga = new GameArea(placeholder, 10);
+        this.add(ga);
+        initControls();
 
-          }
-       });
-    am.put("left", new AbstractAction() {
-
-          @Override
-          public
-          void actionPerformed(ActionEvent e) {
-          ga.moveBlockLeft();
-          }
-       });
-    am.put("up", new AbstractAction() {
-
-          @Override
-          public
-          void actionPerformed(ActionEvent e) {
-   ga.rotateBlock();
-          }
-       });
-    am.put("down", new AbstractAction() {
-
-          @Override
-          public
-          void actionPerformed(ActionEvent e) {
-           ga.dropBlock();
-          }
-       });
-       
     }
-public void startGame(){
-   ga.initBackgroundArray();
-  gt= new GameThread(ga,this);
-  gt.start();
-}
-public void updateScore(int score){
-   scoreDisplay.setText("Score : "+score);
-}
- public void updateLevel(int level){
- levelDisplay.setText("Level : "+level);   
- } 
- 
- @SuppressWarnings("unchecked")
+
+    private void initControls() {
+        InputMap im = this.getRootPane().getInputMap();
+        ActionMap am = this.getRootPane().getActionMap();
+
+        im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
+        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+        im.put(KeyStroke.getKeyStroke("UP"), "up");
+        im.put(KeyStroke.getKeyStroke("DOWN"), "down");
+
+        am.put("right", new AbstractAction() {
+
+            @Override
+            public
+                    void actionPerformed(ActionEvent e) {
+                ga.moveBlockRight();
+
+            }
+        });
+        am.put("left", new AbstractAction() {
+
+            @Override
+            public
+                    void actionPerformed(ActionEvent e) {
+                ga.moveBlockLeft();
+            }
+        });
+        am.put("up", new AbstractAction() {
+
+            @Override
+            public
+                    void actionPerformed(ActionEvent e) {
+                ga.rotateBlock();
+            }
+        });
+        am.put("down", new AbstractAction() {
+
+            @Override
+            public
+                    void actionPerformed(ActionEvent e) {
+                ga.dropBlock();
+            }
+        });
+
+    }
+
+    public void startGame() {
+        ga.initBackgroundArray();
+        gt = new GameThread(ga, this);
+        gt.start();
+    }
+
+    public void updateScore(int score) {
+        scoreDisplay.setText("Score : " + score);
+    }
+
+    public void updateLevel(int level) {
+        levelDisplay.setText("Level : " + level);
+    }
+
+    @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
 
@@ -156,45 +156,44 @@ public void updateScore(int score){
    }// </editor-fold>//GEN-END:initComponents
 
    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
-      gt.interrupt();
-      this.setVisible(false);
-      Tetris.showStartup();
+       gt.interrupt();
+       this.setVisible(false);
+       Tetris.showStartup();
    }//GEN-LAST:event_btnMainMenuActionPerformed
 
- 
-   public static
-    void main(String args[]) {
-      /* Set the Nimbus look and feel */
+    public static
+            void main(String args[]) {
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-       * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-       */
-      try {
-         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-               javax.swing.UIManager.setLookAndFeel(info.getClassName());
-               break;
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-         }
-      } catch (ClassNotFoundException ex) {
-         java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (InstantiationException ex) {
-         java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (IllegalAccessException ex) {
-         java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-         java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-      }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GameForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         //</editor-fold>
 
-      /* Create and display the form */
-     java.awt.EventQueue.invokeLater(new Runnable() {
-         public
-          void run() {
-            new GameForm().setVisible(true);
-         }
-      });
-   }
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public
+                    void run() {
+                new GameForm().setVisible(true);
+            }
+        });
+    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JButton btnMainMenu;
@@ -202,6 +201,5 @@ public void updateScore(int score){
    private javax.swing.JPanel placeholder;
    private javax.swing.JLabel scoreDisplay;
    // End of variables declaration//GEN-END:variables
-
 
 }
