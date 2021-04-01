@@ -309,7 +309,7 @@ public class GameArea extends JPanel {
             for (int x = 0; x < gridColumns; x++) {
 
                 if (x < gridColumns - 1 && y < gridRows - 1) {
-                    g.setColor(Color.lightGray);
+                    g.setColor(Color.gray);
                     g.drawLine((x + 1) * gridCellSize - 2, (y + 1) * gridCellSize, (x + 1) * gridCellSize + 2,
                             (y + 1) * gridCellSize);
                     g.drawLine((x + 1) * gridCellSize, (y + 1) * gridCellSize - 2, (x + 1) * gridCellSize,
