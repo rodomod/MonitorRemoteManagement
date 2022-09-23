@@ -91,6 +91,6 @@ $ git update-ref HEAD $commit
 
 $ git config --global user.name "rodomod"
 
-$ git config --global user.email "odministrator@hotmail.com"
+$ git config --global user.email "Administrator@hotmail.com"
   
 <a href="https://youtu.be/tPsfDhX6Jqs"> tetris the game </a>  
