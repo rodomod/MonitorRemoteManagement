@@ -10,82 +10,63 @@
 ```
 $ mk dir git-tutorial 
 ```
- • : создал папку tutorial
+   • : создал папку tutorial
 
 ```
 $ cd git-tutorial 
 ``` 
-• : вошёл в папку tutorial
+   • : вошёл в папку tutorial
 ```
 $ git init 
 ``` 
-• : инициализировал git
-
-
-
-##√Creating the file 
-
+   • : инициализировал git
+###√Creating the file 
 ```
 $ echo "pictyre the text" > MyFile
 
 
 $ echo "echo the text.java the end" > My2File
 ```
-• : создал два файла с текстом...
-
-
-##√Creating index
+   • : создал два файла с текстом...
+###√Creating index
 ```
 $ git update-index --add MyFile My2File
 ```
-• : добавил в индекс для отслеживания в git
-
-
-##√Вывел объекты базы данных на дисплей 
+   • : добавил в индекс для отслеживания в git
+###√Вывел объекты базы данных на дисплей 
 ```
 $ ls.git/Objects/???/*
 
 
 $ ls.git/objects/?/*
 ```
-
-##√Вывод объекта по имени объекта
+###√Вывод объекта по имени объекта
 ```
 $ git cat-file -t 557db03de....
 ```
-•    : полное имя объекта
-
-	
+   •    : полное имя объекта
 ```
 $ git cat-file blob 557db03	
 ```
-•    : сокращённое имя объекта 
-	
-
-
-##√  
-•    : показать разницу между тем 
+   •    : сокращённое имя объекта 
+###√  
+   •    : показать разницу между тем 
 	  ,что записано в индексе и то
 		,что в настоящее время в рабочем дереве(tree) 
 	
 ```	
 $ git diff-files
 ```
-
-##√Добавим в файл My2File  
+###√Добавим в файл My2File  
 ```
 $ echo "Это новая запись в My2File" >> My2File	
 ```
-
-
-
-##√Далее смотрим изменения
+###√Далее смотрим изменения
 ```	
 $ git diff-files
 ``` 
-
-##√ 
-•  работаем с деревом   :
+###√ 
+   •  работаем с деревом   :
 
 ```
 $ git write-tree
@@ -97,12 +78,12 @@ $ commit=$(echo 'Initial commit' | git commit-tree $tree)
 $ git update-ref HEAD $commit
 ```
 
-• задаём имя пользователя     :
+   • задаём имя пользователя     :
 
 ```
 $ git config --global user.name "rodomod"
 ```
-• задаём почту пользователя     :
+   • задаём почту пользователя     :
 
 ```
 $ git config --global user.email "Administrator@hotmail.com"
