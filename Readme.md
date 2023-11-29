@@ -71,7 +71,9 @@ $ git diff-files
 
 ```
 • показать разницу между тем
+
 •• ,что записано в индексе и то
+
 •••  ,что в настоящее время в рабочем дереве(tree)
 
  
@@ -103,7 +105,7 @@ $ git update-ref HEAD $commit
 	 $ git config --global user.name "rodomod"
 	 
 ```
-• задаём имя пользователя~~     
+• задаём имя пользователя    
    
 ```
 	$ git config --global user.email "Administrator@hotmail.com"
@@ -113,4 +115,4 @@ $ git update-ref HEAD $commit
 
 
  
-[![](***играем в тетрис*** ==>)](<a href="https://youtu.be/tPsfDhX6Jqs"> tetris the game </a>)
+[![](играем в тетрис ==>)](<a href="https://youtu.be/tPsfDhX6Jqs"> tetris the game </a>)
