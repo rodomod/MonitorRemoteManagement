@@ -6,10 +6,10 @@
 ![](010.png)
 
 
-#√Creating the git repository
-
-
+## √Creating the git repository
+```
 $ mk dir git-tutorial 
+```
  
 • : создал папку tutorial
 
