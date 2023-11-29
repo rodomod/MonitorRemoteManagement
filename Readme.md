@@ -134,24 +134,13 @@ $ git update-ref HEAD $commit
   
   
 
-```
-$ git config --global user.name "rodomod"
 
-```
-  
-
-       [~~задаём имя пользователя~~]     
+     ```$ git config --global user.name "rodomod"```
+    ~~задаём имя пользователя~~     
    
-     
-   
+    ```$ git config --global user.email "Administrator@hotmail.com"```
 
-```
-$ git config --global user.email "Administrator@hotmail.com"
-
-```
- 
-
-       [~~задаём почту пользователя~~]     
+     ~~задаём почту пользователя~~     
 
 
  
