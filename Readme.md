@@ -140,7 +140,7 @@ $ git config --global user.name "rodomod"
 ```
   
 
-       ~~задаём имя пользователя~~     
+       [~~задаём имя пользователя~~]     
    
      
    
@@ -151,7 +151,7 @@ $ git config --global user.email "Administrator@hotmail.com"
 ```
  
 
-       ~~задаём почту пользователя~~     
+       [~~задаём почту пользователя~~]     
 
 
  
