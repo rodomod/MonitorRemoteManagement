@@ -115,4 +115,4 @@ $ git update-ref HEAD $commit
 
 
  
-[![](играем в тетрис ==>)](<a href="https://youtu.be/tPsfDhX6Jqs"> tetris the game </a>)
+[[](**играем в тетрис** ==>)](<a href="https://youtu.be/tPsfDhX6Jqs"> tetris the game </a>)
