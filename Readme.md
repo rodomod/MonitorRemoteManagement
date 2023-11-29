@@ -46,19 +46,28 @@ $ ls.git/Objects/???/*
 
 $ ls.git/objects/?/*
 ```
-    • :  Вывел объекты базы данных на дисплей 
+    
+	
+	
+	• :  Вывел объекты базы данных на дисплей 
 
 
 
 
 
 #Вывод объекта по имени объекта
+
+
+
 ```
 $ git cat-file -t 557db03de....
 ```
 
    
    •    : полное имя объекта
+   
+   
+   
 ```
 $ git cat-file blob 557db03	
 ```
@@ -74,11 +83,15 @@ $ git cat-file blob 557db03
  
    •    : показать разницу между тем 
 	  ,что записано в индексе и то
-		,что в настоящее время в рабочем дереве(tree) 
+		,что в настоящее время в рабочем дереве(tree)
+
+
+		
 	
 ```	
 $ git diff-files
 ```
+
 
 
 #√Добавим в файл My2File 
@@ -90,6 +103,7 @@ $ echo "Это новая запись в My2File" >> My2File
 ```
 
 
+
 #√Далее смотрим изменения
 
 
@@ -99,7 +113,9 @@ $ git diff-files
 ``` 
 
 
+
 #√
+
 
 
  
@@ -121,6 +137,9 @@ $ git update-ref HEAD $commit
   
 
   • задаём имя пользователя     :
+  
+  
+  
 
 ```
 $ git config --global user.name "rodomod"
@@ -129,6 +148,9 @@ $ git config --global user.name "rodomod"
    
    
    • задаём почту пользователя     :
+   
+   
+   
 
 ```
 $ git config --global user.email "Administrator@hotmail.com"
