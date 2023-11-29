@@ -6,7 +6,7 @@
 ![](010.png)
 
 
-## √Creating the git repository
+# √Creating the git repository
 ```
 $ mk dir git-tutorial 
 ```
@@ -20,7 +20,9 @@ $ cd git-tutorial
 $ git init 
 ``` 
    • : инициализировал git
-###√Creating the file 
+   
+   
+#√Creating the file 
 ```
 $ echo "pictyre the text" > MyFile
 
@@ -28,19 +30,25 @@ $ echo "pictyre the text" > MyFile
 $ echo "echo the text.java the end" > My2File
 ```
    • : создал два файла с текстом...
-###√Creating index
+   
+   
+#√Creating index
 ```
 $ git update-index --add MyFile My2File
 ```
    • : добавил в индекс для отслеживания в git
-###√Вывел объекты базы данных на дисплей 
+   
+   
+#√Вывел объекты базы данных на дисплей 
 ```
 $ ls.git/Objects/???/*
 
 
 $ ls.git/objects/?/*
 ```
-###√Вывод объекта по имени объекта
+
+
+#√Вывод объекта по имени объекта
 ```
 $ git cat-file -t 557db03de....
 ```
@@ -49,7 +57,9 @@ $ git cat-file -t 557db03de....
 $ git cat-file blob 557db03	
 ```
    •    : сокращённое имя объекта 
-###√  
+   
+   
+#√  
    •    : показать разницу между тем 
 	  ,что записано в индексе и то
 		,что в настоящее время в рабочем дереве(tree) 
@@ -57,15 +67,21 @@ $ git cat-file blob 557db03
 ```	
 $ git diff-files
 ```
-###√Добавим в файл My2File  
+
+
+#√Добавим в файл My2File  
 ```
 $ echo "Это новая запись в My2File" >> My2File	
 ```
-###√Далее смотрим изменения
+
+
+#√Далее смотрим изменения
 ```	
 $ git diff-files
 ``` 
-###√ 
+
+
+#√ 
    •  работаем с деревом   :
 
 ```
