@@ -8,7 +8,7 @@
 
 ##   √Creating the git repository
 
-    **создал папку tutorial**
+    ***создал папку tutorial***
 
 ```
 $ mk dir git-tutorial 
