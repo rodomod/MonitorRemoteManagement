@@ -9,23 +9,16 @@
 ##   √Creating the git repository
 
     
-
-```
-$ mk dir git-tutorial 
-
-```
+'$ mkdir tutorial'
 
 • создал папку tutorial
 
-```
-$ cd git-tutorial
- 
-``` 
-•  вошёл в папку tutorial
-```
-$ git init 
+'$ cd tutorial' 
 
-``` 
+•  вошёл в папку tutorial
+
+'$ git init' 
+ 
 • инициализировал git
    
 ```
